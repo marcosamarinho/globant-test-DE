@@ -1,0 +1,15 @@
+
+cmd="flask --app server run"
+if [ "$1" = 'start' ]; then 
+   $cmd &
+elif [ "$1" = 'stop' ]; then 
+PID=$(ps -ef |grep "flask --app server run"|grep -v grep |awk '{ print $2 }')
+   kill -15 $PID 
+elif [ "$1" = 'restart' ]; then 
+    $0 stop 
+    $0 start
+else
+   echo "Usage $0 [start|stop|restart]"
+   exit 1 
+fi 
+
