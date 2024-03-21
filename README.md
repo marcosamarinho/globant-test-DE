@@ -1,23 +1,24 @@
 # globant-test-DE
 Data Engeneer Test 
 
-directories 
+Directories  
 
-data 
+# data 
    Contains CSV files and pdf instructions  	
-mariadb 
+# mariadb 
    Docker-compose database nstall 
-python-flask 
+# python-flask 
    web environment to upload file and database load 
-scripts 
+# scripts 
    sql scripts and shell scripts 
 
-Note : used database client to allow use LOAD command to read CSV 
+Note : Used database native client to allow use LOAD command to read CSV 
 Native load was chosen to allow fast load for small and big files even using database constraints . 
 
 # Steps to install mariadb (docker-compose) port 3306 
-cd mariadb 
-linux-install-mysql-client.sh
+. cd mariadb 
+
+. linux-install-mysql-client.sh
 # start mariadb in bg 
 run.sh & 
 cd .. 
