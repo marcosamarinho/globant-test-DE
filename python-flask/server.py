@@ -44,7 +44,7 @@ def upload_file():
             file.save(save_file)
             table=filename.split('.')[0]
             #  call clp 
-            CMD=f"bash ../load_table.sh {UPLOAD_FOLDER} db {table}"
+            CMD=f"bash ../scripts/load_table.sh {UPLOAD_FOLDER} db {table}"
             return_code = subprocess.call(CMD, shell=True) 
             if return_code != 0 :
                return f"""ERROR={return_code}"""

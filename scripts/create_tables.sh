@@ -8,7 +8,8 @@
  # Start #
 #-------# 
 
-# create database if not exists 
+echo "# create database $DB if not exists "
+ echo $clp 
 $clP <<EOF
 create database $DB;
 EOF
