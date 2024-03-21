@@ -16,9 +16,9 @@ Note : Used database native client to allow use LOAD command to read CSV
 Native load was chosen to allow fast load for small and big files even using database constraints . 
 
 # Steps to install mariadb (docker-compose) port 3306 
-. cd mariadb 
+cd mariadb 
+linux-install-mysql-client.sh
 
-. linux-install-mysql-client.sh
 # start mariadb in bg 
 run.sh & 
 cd .. 
@@ -26,24 +26,20 @@ cd ..
 cd python-flask 
 ./install.sh 
 flaskctl start
-
 cd ..
+# create database tables 
 cd scripts 
-./create_tables.sh 
+./create_tables.sh
 
+# load tables using scripts 
 ./load_table ../data db departments
 ./load_table ../data db jobs
 ./load_table ../data db hired_employees
 
-
-or 
-
-using  web browser by now 
+# or using  web browser ( by now ) 
 
 http://localhost:5000
-nd upload the CSV files 
+upload the CSV files 
 
-jobs
-jobs
 
 
