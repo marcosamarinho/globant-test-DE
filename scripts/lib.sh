@@ -1,11 +1,13 @@
 # 1- Creates database if not exists 
 # 2- Create tables from flat files using native LOAD  
 # 3- Load tables using NATIVE clp 
-# other languages can be used so native load
+# other languages can be used so I choose use native load 
 # is a simple and optimized way to work along flat files and databases 
 
 Host=0.0.0.0
 User=root
+
+#TODO implement secret or Ip trusted on db 
 Pwd=password
 
 DB=db
