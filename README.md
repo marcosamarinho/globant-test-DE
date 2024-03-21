@@ -41,6 +41,7 @@ cd scripts <br>
 http://localhost:5000<br>
 upload the CSV files 
 run_queriess.sh<br>
+
 run query 1
 
 +-------------+-----------+---------+---------+---------+---------+<br>
