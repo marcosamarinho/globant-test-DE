@@ -3,13 +3,13 @@ Data Engeneer Test
 
 Directories  
 
-# data 
+- # data 
    Contains CSV files and pdf instructions  	
-# mariadb 
+- # mariadb 
    Docker-compose database nstall 
-# python-flask 
+- # python-flask 
    web environment to upload file and database load 
-# scripts 
+- # scripts 
    sql scripts and shell scripts 
 
 Note : Used database native client to allow use LOAD command to read CSV 
@@ -39,7 +39,7 @@ cd scripts <br>
 # or using  web browser ( by now ) 
 
 http://localhost:5000<br>
-upload the CSV files 
+upload the CSV files<br>
 run_queriess.sh<br>
 
 run query 1
