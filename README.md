@@ -9,7 +9,7 @@ Project Directories
 
 - ## data 
    Contains CSV files and pdf instructions <br>
-   Note . link on pdf not works then I created at CSV hand at hand 
+   Note . link on pdf not works then I created  CSVs at hand following examples in pdf .  
 - ## mariadb 
    Docker-compose database nstall 
 - ## FastAPI
