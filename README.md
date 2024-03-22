@@ -1,16 +1,16 @@
 # globant-test-DE
-Data Engeneer Test 
+Data Engeneer Test iusing native database load and python FastAPI to allow document and fast development 
 
-Directories  
+Project Directories  
 
-- # data 
+- ## data 
    Contains CSV files and pdf instructions <br>
    Note . link on pdf not works then I created at CSV hand at hand 
-- # mariadb 
+- ## mariadb 
    Docker-compose database nstall 
-- # python-flask 
+- ## python-flask 
    web environment to upload file and database load 
-- # scripts 
+- ## scripts 
    sql scripts and shell scripts 
 
 Note : Used database native client to allow use LOAD command to read CSV 
@@ -22,12 +22,12 @@ cd mariadb
 linux-install-mysql-client.sh
 ```
 
-# start mariadb in bg
+# Start mariadb in bg
 ```bash
 run.sh &
 cd ..
 ```
-# start development web server  
+# Start development web server  
 ```bash
 cd python-flask 
 ./install.sh 
@@ -39,14 +39,14 @@ cd ..
 cd scripts 
 ./create_tables.sh
 ```
-# load tables using scripts 
+# Load tables using scripts 
 ```bash
 ./load_table ../data db departments
 ./load_table ../data db jobs
 ./load_table ../data db hired_employees
 ```
 
-# load table using API using curl 
+# Load table using API using curl 
 ```bash
 curl -X 'POST' \<br>
   'http://localhost:9000/upload' \
@@ -54,15 +54,15 @@ curl -X 'POST' \<br>
   -H 'Content-Type: multipart/form-data' \
   -F 'file=@jobs.csv;type=text/csv'
 ```
-# OR using  web browser FastAPI /docs
+# OR Using  web browser FastAPI /docs
 upload the CSV files<br>
 http://localhost:9000/docs<br>
 ![screenshot](upload_FastAPI.png)
-# Run queries to show result 
+# Run queries 
 ```bash
 run_queriess.sh
 ```
-
+# output
 ```bash
 
 run query 1
