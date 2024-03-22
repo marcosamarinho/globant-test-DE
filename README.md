@@ -17,56 +17,70 @@ Note : Used database native client to allow use LOAD command to read CSV
 Native load was chosen to allow fast load for small and big files even using database constraints . 
 
 # Steps to install mariadb (docker-compose) port 3306 
-cd mariadb<br>
-linux-install-mysql-client.sh<br>
+```bash
+cd mariadb
+linux-install-mysql-client.sh
+```
 
-# start mariadb in bg 
-run.sh & <br>
-cd .. <br>
+# start mariadb in bg
+```bash
+run.sh &
+cd ..
+```
 # start development web server  
-cd python-flask <br>
-./install.sh <br>
-flaskctl start <br>
-cd .. <br>
-# create database tables 
-cd scripts <br>
-./create_tables.sh <br>
-
+```bash
+cd python-flask 
+./install.sh 
+flaskctl start 
+cd ..
+```
+# Create database tables
+```bash
+cd scripts 
+./create_tables.sh
+```
 # load tables using scripts 
-./load_table ../data db departments<br>
-./load_table ../data db jobs<br>
-./load_table ../data db hired_employees<br>
+```bash
+./load_table ../data db departments
+./load_table ../data db jobs
+./load_table ../data db hired_employees
+```
 
-# load table using API using curl <br>
+# load table using API using curl 
+```bash
 curl -X 'POST' \<br>
-  'http://localhost:9000/upload' \<br>
-  -H 'accept: application/json' \<br>
-  -H 'Content-Type: multipart/form-data' \<br>
-  -F 'file=@jobs.csv;type=text/csv'<br>
-
+  'http://localhost:9000/upload' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'file=@jobs.csv;type=text/csv'
+```
 # OR using  web browser FastAPI /docs
 upload the CSV files<br>
 http://localhost:9000/docs<br>
-TODO incluir image 
+![screenshot](upload_FastAPI.png)
 # Run queries to show result 
-run_queriess.sh<br>
+```bash
+run_queriess.sh
+```
+
+```bash
 
 run query 1
++-------------+-----------+---------+---------+---------+---------+
+| department  | job       | sum(q1) | sum(q2) | sum(q3) | sum(q4) |
++-------------+-----------+---------+---------+---------+---------+
+| Staff       | Recruiter |       3 |       0 |       7 |      11 |
+| Staff       | Manager   |       2 |       1 |       0 |       2 |
+| Suppy Chain | Manager   |       0 |       1 |       3 |       0 |
++-------------+-----------+---------+---------+---------+---------+
 
-+-------------+-----------+---------+---------+---------+---------+<br>
-| department  | job       | sum(q1) | sum(q2) | sum(q3) | sum(q4) |<br>
-+-------------+-----------+---------+---------+---------+---------+<br>
-| Staff       | Recruiter |       3 |       0 |       7 |      11 |<br>
-| Staff       | Manager   |       2 |       1 |       0 |       2 |<br>
-| Suppy Chain | Manager   |       0 |       1 |       3 |       0 |<br>
-+-------------+-----------+---------+---------+---------+---------+<br>
-run query 2<br>
-+---------------+------------+-------+---------+<br>
-| department_id | department | hired | mean    |<br>
-+---------------+------------+-------+---------+<br>
-|             7 | Staff      |    26 | 15.0000 |<br>
-+---------------+------------+-------+---------+<br>
-
+run query 2
++---------------+------------+-------+---------+
+| department_id | department | hired | mean    |
++---------------+------------+-------+---------+
+|             7 | Staff      |    26 | 15.0000 |
++---------------+------------+-------+---------+
+```
 
 
 
