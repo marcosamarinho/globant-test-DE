@@ -2,7 +2,7 @@
 Data Engeneer Test <br>
 using native database load to read CSV and load at the database <br>
 chosen to allow fast load for small and big files even using database constraints .<br>
-python FastAPI framework to allow document and run requests 
+python FastAPI and uvicorn frameworks to allow create API , document and run requests 
  
 
 Project Directories  
@@ -19,24 +19,22 @@ Project Directories
 - ## python-flask  ( NOT IN USE ) 
    web environment to upload file and database load  
 
-
-
 # Steps to install mariadb (docker-compose) port 3306 
 ```bash
 cd mariadb
 linux-install-mysql-client.sh
 ```
-
 # Start mariadb in bg
 ```bash
 run.sh &
 cd ..
 ```
-# Start development web server  
+# Start FastAPI
 ```bash
-cd python-flask 
-./install.sh 
-flaskctl start 
+cd FastAPI
+# install python requirement.txt 
+./install_requirements.sh
+uvicornctl start
 cd ..
 ```
 # Create database tables
@@ -50,8 +48,7 @@ cd scripts
 ./load_table ../data db jobs
 ./load_table ../data db hired_employees
 ```
-
-# Load table using API using curl 
+# Client to POST Load table using API (using curl) 
 ```bash
 curl -X 'POST' \<br>
   'http://localhost:9000/upload' \
