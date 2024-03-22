@@ -61,7 +61,7 @@ http://localhost:9000/docs<br>
 ![screenshot](upload_FastAPI.png)
 # Run queries 
 ```bash
-run_queriess.sh
+run_queries.sh
 ```
 # output
 ```bash
