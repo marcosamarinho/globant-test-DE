@@ -11,7 +11,7 @@ Project Directories
    Contains CSV files and pdf instructions <br>
    Note . link on pdf not works then I created  CSVs at hand following examples in pdf .  
 - ## mariadb 
-   Docker-compose database nstall 
+   Docker-compose database install 
 - ## FastAPI
    python framework to allow create API  
 - ## scripts 
