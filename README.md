@@ -37,12 +37,18 @@ cd scripts <br>
 ./load_table ../data db jobs<br>
 ./load_table ../data db hired_employees<br>
 
-# or using  web browser ( by now ) 
+# load table using API using curl <br>
+curl -X 'POST' \<br>
+  'http://localhost:9000/upload' \<br>
+  -H 'accept: application/json' \<br>
+  -H 'Content-Type: multipart/form-data' \<br>
+  -F 'file=@jobs.csv;type=text/csv'<br>
 
-http://localhost:5000<br>
+# OR using  web browser FastAPI /docs
 upload the CSV files<br>
-
-
+http://localhost:9000/docs<br>
+TODO incluir image 
+# Run queries to show result 
 run_queriess.sh<br>
 
 run query 1
