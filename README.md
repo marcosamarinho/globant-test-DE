@@ -1,6 +1,9 @@
 # globant-test-DE
 Data Engeneer Test <br>
-using native database load and python FastAPI to allow document and fast development 
+using native database load to read CSV and load at the database <br>
+chosen to allow fast load for small and big files even using database constraints .<br>
+python FastAPI framework to allow document and run requests 
+ 
 
 Project Directories  
 
@@ -9,13 +12,14 @@ Project Directories
    Note . link on pdf not works then I created at CSV hand at hand 
 - ## mariadb 
    Docker-compose database nstall 
-- ## python-flask 
-   web environment to upload file and database load 
+- ## FastAPI
+   python framework to allow create API  
 - ## scripts 
-   sql scripts and shell scripts 
+   sql scripts and shell scripts
+- ## python-flask  ( NOT IN USE ) 
+   web environment to upload file and database load  
 
-Note : Used database native client to allow use LOAD command to read CSV 
-Native load was chosen to allow fast load for small and big files even using database constraints . 
+
 
 # Steps to install mariadb (docker-compose) port 3306 
 ```bash
