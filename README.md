@@ -18,14 +18,13 @@ Project Directories
    sql scripts and shell scripts
 - ## python-flask  ( NOT IN USE ) 
    web environment to upload file and database load  
-
+# Clone project on linux apt environment and follow the steps below 
 # Steps to install mariadb (docker-compose) port 3306 
 ```bash
 cd mariadb
+# install client 
 linux-install-mysql-client.sh
-```
-# Start mariadb in bg
-```bash
+# Start mariadb in bg docker-compose run 
 run.sh &
 cd ..
 ```
@@ -37,18 +36,18 @@ cd FastAPI
 uvicornctl start
 cd ..
 ```
-# Create database tables
+# Create database tables using DDL.sql
 ```bash
 cd scripts 
 ./create_tables.sh
 ```
 # Load tables using scripts 
 ```bash
-./load_table ../data db departments
-./load_table ../data db jobs
-./load_table ../data db hired_employees
+./load_table.sh ../data db departments
+./load_table.sh ../data db jobs
+./load_table.sh ../data db hired_employees
 ```
-# Client to POST Load table using API (using curl) 
+# Client to POST file and Load table using API (using curl) 
 ```bash
 curl -X 'POST' \<br>
   'http://localhost:9000/upload' \
