@@ -55,7 +55,7 @@ curl -X 'POST' \<br>
   -H 'Content-Type: multipart/form-data' \
   -F 'file=@jobs.csv;type=text/csv'
 ```
-# OR Using  web browser FastAPI /docs
+# OR Using  web browser GUI FastAPI /docs
 upload the CSV files<br>
 http://localhost:9000/docs<br>
 ![screenshot](upload_FastAPI.png)
