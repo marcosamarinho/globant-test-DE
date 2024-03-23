@@ -3,7 +3,7 @@ Data Engeneer Test <br>
 This project creates tables and them call API to load data into database (mariadb) <br>
 using native database LOAD command usin client  , to read CSV and load at the database <br>
 chosen to allow fast load , proved on small and big files even using database constraints .<br>
-python FastAPI and uvicorn frameworks to allow create API , document and run requests 
+python FastAPI and uvicorn frameworks to allow create web server to dispose API , document and run requests 
 
 Project Directories  
 
