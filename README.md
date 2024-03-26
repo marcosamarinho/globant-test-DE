@@ -66,7 +66,7 @@ Note : port 9000 for development and 80 on docker
 http://localhost:9000/docs<br>
 or 
 http://localhost/docs<br>
-upload the CSV files<br>
+upload the CSV files using gui , choose api and click on <try it out > button <br>
 ![screenshot](upload_FastAPI.png)
 # Run queries 
 ```bash
