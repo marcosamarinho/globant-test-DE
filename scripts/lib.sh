@@ -4,7 +4,9 @@
 # other languages can be used so I choose use native load 
 # is a simple and optimized way to work along flat files and databases 
 
-Host=0.0.0.0
+# mysql address change it  
+#Host=0.0.0.0
+Host=192.168.2.20
 User=root
 
 #TODO implement secret or Ip trusted on db 
@@ -16,7 +18,7 @@ clp="mysql -u $User -p$Pwd -h $Host"
 
 ###############################
 function load_table {
-echo $0 $*
+echo $0 $*>>/tmp/load_table
 DIR="$1"
 DB="$2"
 table="$3"
@@ -32,7 +34,7 @@ IGNORE 1 LINES;
 EOF
 return=$?
 if [ "$return" != '0' ];then
-   echo Error $return 
+   echo Error $return >>/tmp/load_table
    exit $return 
 fi 
 }

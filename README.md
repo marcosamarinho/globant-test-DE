@@ -3,15 +3,16 @@ Data Engeneer Test <br>
 This project creates tables and them call API to load data into database (mariadb) <br>
 using native database LOAD command usin client  , to read CSV and load at the database <br>
 chosen to allow fast load , proved on small and big files even using database constraints .<br>
-python FastAPI and uvicorn frameworks to allow create API , document and run requests 
+python FastAPI and uvicorn frameworks to allow create web server to dispose API , document and run requests<br>
+API allows upload file using chunks for not put all file in memory and them call script to load ar the remote database . 
 
 Project Directories  
 
 - ## data 
    Contains CSV files and pdf instructions <br>
-   Note . link on pdf not works then I created at CSV hand at hand 
+   Note . link on pdf not works then I created  CSVs at hand following examples in pdf .  
 - ## mariadb 
-   Docker-compose database nstall 
+   Docker-compose database install 
 - ## FastAPI
    python framework to allow create API  
 - ## scripts 
@@ -55,13 +56,13 @@ curl -X 'POST' \<br>
   -H 'Content-Type: multipart/form-data' \
   -F 'file=@jobs.csv;type=text/csv'
 ```
-# OR Using  web browser FastAPI /docs
+# OR Using  web browser GUI FastAPI /docs
 upload the CSV files<br>
 http://localhost:9000/docs<br>
 ![screenshot](upload_FastAPI.png)
 # Run queries 
 ```bash
-run_queriess.sh
+run_queries.sh
 ```
 # output
 ```bash

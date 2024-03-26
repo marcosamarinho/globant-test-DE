@@ -1,0 +1,19 @@
+if [ "$ENV" = 'PRD' ];then
+   CMD="uvicorn main:app --port 9000"
+else 
+   ENV="DEV"
+   CMD="uvicorn main:app --port 9000 --reload"
+fi 
+if [ "$1" = 'start' ];then
+   $CMD &
+
+elif [ "$1" = 'stop' ];then
+   PID=$(ps -ef |grep "$CMD" |grep -v grep |awk '{print $2}') 
+   if  [ "$PID" != '' ];then 
+      kill -15 $PID 
+   fi  
+elif [ "$1" = 'restart' ];then
+   $0 stop
+   $0 start
+fi 
+

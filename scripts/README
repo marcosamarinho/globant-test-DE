@@ -1,0 +1,3 @@
+change nt the lib.sh 
+the variable Host to point to the installed mysql database 
+before create image and up FastAPI server  

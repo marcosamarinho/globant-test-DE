@@ -3,15 +3,18 @@ from fastapi import File, UploadFile
 from fastapi import Response , status 
 import os 
 import subprocess
+import sys
+import shlex
 
 # memory limit use 1Mb at time 
 CHUNK_SIZE=1024*1024
 STAGE_DIR="/tmp/stage"
 
-app = FastAPI()
+app = FastAPI(root_path="/api/v1")
+#, root_path_in_servers=False)
 
 
-@app.post("/upload", status_code=200)
+@app.post("/api/v1/upload", status_code=200)
 def upload(response:Response, file: UploadFile = File(...)):
 
    ALLOWED_EXTENSIONS = {'csv'} 
@@ -33,16 +36,24 @@ def upload(response:Response, file: UploadFile = File(...)):
       file.file.close()
    table=file.filename.split('.')[0]
    message=f"Table db.{table} loaded"
+   cwd=os.getcwd()
    try: 
       #  call clp
-
-      CMD=f"bash ../scripts/load_table.sh {STAGE_DIR} db {table}"
-      return_code = subprocess.call(CMD, shell=True)
-      if return_code != 0 :
-         message=f"Error running script return_code={return_code}"
-   except Exception:
+      CMD=f"scripts/load_table.sh {STAGE_DIR} db {table}"
+      if os.getcwd().startswith('/code') :
+         # Docker 
+         CMD=f"./{CMD}"
+      else: 
+         CMD=f"../../{CMD}"
+      proc = subprocess.Popen(CMD, stdout=subprocess.PIPE, stderr=subprocess.PIPE,shell=True)
+      out, err = proc.communicate()
+      exitcode = proc.returncode 
+      if exitcode != 0 :
+         raise Exception( f"Error running script {CMD} return_code={exitcode} stderr={err} ") 
+#   except subprocess.CalledProcessError as e:
+   except Exception as e:
       response.status_code = status.HTTP_400_BAD_REQUEST
-      message= f"Error loading table {table}"
+      message= f"Error loading table {cwd} {table} {e}"
    finally:
       # delete uploaded file
       os.remove(stage_file)
