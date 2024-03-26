@@ -2,7 +2,7 @@
 Data Engeneer Test <br>
 This project creates tables and them call API to load data into database (mariadb) <br>
 using native database LOAD command usin client  , to read CSV and load at the database <br>
-chosen to allow fast load , proved on small and big files even using database constraints .<br>
+chosen to allow fast load , proved on small and big files even using database constraints for more information take a look at https://medium.com/@benmorel/high-speed-inserts-with-mysql-9d3dcd76f723 .<br>
 python FastAPI and uvicorn frameworks to allow create web server to dispose API , document and run requests<br>
 API allows upload file using chunks for not put all file in memory and them call script to load ar the remote database . 
 
@@ -17,10 +17,9 @@ Project Directories
    python framework to allow create API  
 - ## scripts 
    sql scripts and shell scripts
-- ## python-flask  ( NOT IN USE ) 
-   web environment to upload file and database load  
+
 # Clone project on linux apt environment and follow the steps below 
-# Steps to install mariadb (docker-compose) port 3306 
+# install mariadb first command bellow can be used on local docker environment (docker-compose) port 3306 
 ```bash
 cd mariadb
 # install client 
@@ -29,36 +28,45 @@ linux-install-mysql-client.sh
 run.sh &
 cd ..
 ```
-# Start FastAPI
-```bash
-cd FastAPI
-# install python requirement.txt 
-./install_requirements.sh
-uvicornctl start
-cd ..
-```
+
+# Change the script to point to the database installed 
+edit scripts/lib.sh and change Host=(database address>)<br>
+TODO change it to use secret or create ip address database security 
 # Create database tables using DDL.sql
 ```bash
 cd scripts 
 ./create_tables.sh
 ```
-# Load tables using scripts 
+# Load tables using scripts ( optional )(same one will be called by API) 
 ```bash
 ./load_table.sh ../data db departments
 ./load_table.sh ../data db jobs
 ./load_table.sh ../data db hired_employees
 ```
-# Client to POST file and Load table using API (using curl) 
+# Start FastAPI on local environment (developmrent)( or use the docker below ) 
 ```bash
-curl -X 'POST' \<br>
-  'http://localhost:9000/upload' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'file=@jobs.csv;type=text/csv'
+cd FastAPI
+# install python requirement.txt 
+./install_requirements.sh
+cd app
+uvicornctl start
 ```
-# OR Using  web browser GUI FastAPI /docs
-upload the CSV files<br>
+# create docker image with FastAPI, uvicorn and mysql client
+```bash
+./build_image_myFastAPI.sh
+```
+# run docker image 
+```bash
+./image_run.sh
+```
+
+
+# Use web browser GUI FastAPI /docs
+Note : port 9000 for development and 80 on docker  
 http://localhost:9000/docs<br>
+or 
+http://localhost/docs<br>
+upload the CSV files<br>
 ![screenshot](upload_FastAPI.png)
 # Run queries 
 ```bash
