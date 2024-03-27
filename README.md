@@ -72,25 +72,6 @@ upload the CSV files using gui , choose api and click on <try it out > button <b
 ```bash
 run_queries.sh
 ```
-# output
-```bash
-
-run query 1
-+-------------+-----------+---------+---------+---------+---------+
-| department  | job       | sum(q1) | sum(q2) | sum(q3) | sum(q4) |
-+-------------+-----------+---------+---------+---------+---------+
-| Staff       | Recruiter |       3 |       0 |       7 |      11 |
-| Staff       | Manager   |       2 |       1 |       0 |       2 |
-| Suppy Chain | Manager   |       0 |       1 |       3 |       0 |
-+-------------+-----------+---------+---------+---------+---------+
-
-run query 2
-+---------------+------------+-------+---------+
-| department_id | department | hired | mean    |
-+---------------+------------+-------+---------+
-|             7 | Staff      |    26 | 15.0000 |
-+---------------+------------+-------+---------+
-```
 
 
 

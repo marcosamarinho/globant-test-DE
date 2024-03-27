@@ -1,7 +1,7 @@
 -- create all tables at the database 
--- drop table hired_employees ;
--- drop table departments;
--- drop table jobs; 
+drop table hired_employees ;
+drop table departments;
+drop table jobs; 
  
 create table departments (
    id integer,
